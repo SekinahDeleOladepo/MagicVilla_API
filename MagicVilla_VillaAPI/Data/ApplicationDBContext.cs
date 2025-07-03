@@ -1,4 +1,5 @@
 ﻿using MagicVilla_VillaAPI.Model;
+using MagicVilla_VillaAPI.Model.Dto;
 using Microsoft.EntityFrameworkCore;
 
 namespace MagicVilla_VillaAPI.Data
