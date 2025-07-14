@@ -4,6 +4,7 @@ using MagicVilla_VillaAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MagicVilla_VillaAPI.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250711115652_addUpdatedDateToTable")]
+    partial class addUpdatedDateToTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -83,7 +86,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 2,
                             Amenity = "",
-                            DateCreated = new DateTime(2025, 7, 11, 13, 39, 52, 156, DateTimeKind.Local).AddTicks(3245),
+                            DateCreated = new DateTime(2025, 7, 11, 12, 56, 51, 298, DateTimeKind.Local).AddTicks(2650),
                             Details = "",
                             ImageUrl = "",
                             Name = "Bliss",
@@ -96,7 +99,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 3,
                             Amenity = "",
-                            DateCreated = new DateTime(2025, 7, 11, 13, 39, 52, 156, DateTimeKind.Local).AddTicks(3257),
+                            DateCreated = new DateTime(2025, 7, 11, 12, 56, 51, 298, DateTimeKind.Local).AddTicks(2662),
                             Details = "",
                             ImageUrl = "",
                             Name = "Pure",
@@ -109,7 +112,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 4,
                             Amenity = "",
-                            DateCreated = new DateTime(2025, 7, 11, 13, 39, 52, 156, DateTimeKind.Local).AddTicks(3260),
+                            DateCreated = new DateTime(2025, 7, 11, 12, 56, 51, 298, DateTimeKind.Local).AddTicks(2665),
                             Details = "",
                             ImageUrl = "",
                             Name = "Kingdom",
@@ -122,7 +125,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 5,
                             Amenity = "",
-                            DateCreated = new DateTime(2025, 7, 11, 13, 39, 52, 156, DateTimeKind.Local).AddTicks(3262),
+                            DateCreated = new DateTime(2025, 7, 11, 12, 56, 51, 298, DateTimeKind.Local).AddTicks(2667),
                             Details = "",
                             ImageUrl = "",
                             Name = "Salamah",
@@ -148,23 +151,9 @@ namespace MagicVilla_VillaAPI.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("VillaID")
-                        .HasColumnType("int");
-
                     b.HasKey("VillaNo");
 
                     b.ToTable("VillaNumbers");
-                });
-
-            modelBuilder.Entity("MagicVilla_VillaAPI.Model.VillaNumber", b =>
-                {
-                    b.HasOne("MagicVilla_VillaAPI.Model.Villa", "Villa")
-                        .WithMany()
-                        .HasForeignKey("VillaNo")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Villa");
                 });
 #pragma warning restore 612, 618
         }
