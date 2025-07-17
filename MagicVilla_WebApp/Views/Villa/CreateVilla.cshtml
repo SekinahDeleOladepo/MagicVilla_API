@@ -1,0 +1,87 @@
+﻿@model MagicVilla_WebApp.Model.Dto.VillaCreateDTO
+
+@{
+    ViewData["Title"] = "Create Villa";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4"><i class="bi bi-building"></i> Create New Villa</h2>
+
+    <form asp-action="CreateVilla" method="post" class="needs-validation" novalidate>
+        @Html.AntiForgeryToken()
+
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">
+                <i class="bi bi-tag-fill text-primary"></i> @Html.DisplayNameFor(m => m.Name)
+            </label>
+            <input asp-for="Name" class="form-control" />
+            <div class="text-danger" asp-validation-for="Name"></div>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Details" class="form-label">
+                <i class="bi bi-card-text text-primary"></i> @Html.DisplayNameFor(m => m.Details)
+            </label>
+            <textarea asp-for="Details" class="form-control" rows="4"></textarea>
+            <div class="text-danger" asp-validation-for="Details"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label asp-for="Rate" class="form-label">
+                    <i class="bi bi-currency-dollar text-success"></i> @Html.DisplayNameFor(m => m.Rate)
+                </label>
+                <input asp-for="Rate" class="form-control" type="number" step="0.01" />
+                <div class="text-danger" asp-validation-for="Rate"></div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label asp-for="Sqft" class="form-label">
+                    <i class="bi bi-bounding-box text-info"></i> @Html.DisplayNameFor(m => m.Sqft)
+                </label>
+                <input asp-for="Sqft" class="form-control" type="number" />
+                <div class="text-danger" asp-validation-for="Sqft"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label asp-for="Occupancy" class="form-label">
+                    <i class="bi bi-people-fill text-warning"></i> @Html.DisplayNameFor(m => m.Occupancy)
+                </label>
+                <input asp-for="Occupancy" class="form-control" type="number" />
+                <div class="text-danger" asp-validation-for="Occupancy"></div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label asp-for="ImageUrl" class="form-label">
+                    <i class="bi bi-image-fill text-danger"></i> @Html.DisplayNameFor(m => m.ImageUrl)
+                </label>
+                <input asp-for="ImageUrl" class="form-control" type="url" />
+                <div class="text-danger" asp-validation-for="ImageUrl"></div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Amenity" class="form-label">
+                <i class="bi bi-stars text-secondary"></i> @Html.DisplayNameFor(m => m.Amenity)
+            </label>
+            <input asp-for="Amenity" class="form-control" />
+            <div class="text-danger" asp-validation-for="Amenity"></div>
+        </div>
+
+        <div class="d-flex justify-content-between mt-4">
+            <button type="submit" class="btn btn-primary">
+                <i class="bi bi-save"></i> Create Villa
+            </button>
+            <a asp-action="IndexVilla" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left"></i> Cancel
+            </a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

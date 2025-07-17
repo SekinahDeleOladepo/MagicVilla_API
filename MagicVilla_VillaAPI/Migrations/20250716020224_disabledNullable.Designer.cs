@@ -4,6 +4,7 @@ using MagicVilla_VillaAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MagicVilla_VillaAPI.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250716020224_disabledNullable")]
+    partial class disabledNullable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,15 +34,18 @@ namespace MagicVilla_VillaAPI.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Amenity")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Details")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -80,7 +86,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 2,
                             Amenity = "",
-                            DateCreated = new DateTime(2025, 7, 16, 3, 3, 34, 726, DateTimeKind.Local).AddTicks(6221),
+                            DateCreated = new DateTime(2025, 7, 16, 3, 2, 23, 173, DateTimeKind.Local).AddTicks(4635),
                             Details = "",
                             ImageUrl = "",
                             Name = "Bliss",
@@ -93,7 +99,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 3,
                             Amenity = "",
-                            DateCreated = new DateTime(2025, 7, 16, 3, 3, 34, 726, DateTimeKind.Local).AddTicks(6234),
+                            DateCreated = new DateTime(2025, 7, 16, 3, 2, 23, 173, DateTimeKind.Local).AddTicks(4649),
                             Details = "",
                             ImageUrl = "",
                             Name = "Pure",
@@ -106,7 +112,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 4,
                             Amenity = "",
-                            DateCreated = new DateTime(2025, 7, 16, 3, 3, 34, 726, DateTimeKind.Local).AddTicks(6236),
+                            DateCreated = new DateTime(2025, 7, 16, 3, 2, 23, 173, DateTimeKind.Local).AddTicks(4652),
                             Details = "",
                             ImageUrl = "",
                             Name = "Kingdom",
@@ -119,7 +125,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 5,
                             Amenity = "",
-                            DateCreated = new DateTime(2025, 7, 16, 3, 3, 34, 726, DateTimeKind.Local).AddTicks(6238),
+                            DateCreated = new DateTime(2025, 7, 16, 3, 2, 23, 173, DateTimeKind.Local).AddTicks(4655),
                             Details = "",
                             ImageUrl = "",
                             Name = "Salamah",
@@ -139,6 +145,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("SpecialDetails")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedDate")
