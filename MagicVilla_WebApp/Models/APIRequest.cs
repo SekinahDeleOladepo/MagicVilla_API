@@ -7,5 +7,6 @@ namespace MagicVilla_WebApp.Models
         public ApiType ApiType { get; set; } = ApiType.GET;
         public String Url { get; set; }
         public object Data { get; set; }
+        public String Token { get; set; }
     }
 }

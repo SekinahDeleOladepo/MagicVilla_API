@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Http.Headers;
 using System.Text;
 using MagicVilla_Utility;
 using MagicVilla_WebApp.Model;
@@ -47,6 +48,10 @@ namespace MagicVilla_WebApp.Services
                         break;
                 }
                 HttpResponseMessage apiResponse = null;
+                if(!string.IsNullOrEmpty(apiRequest.Token))
+                {
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiRequest.Token);
+                }
                 apiResponse = await client.SendAsync(message);
                 var apiContent = await apiResponse.Content.ReadAsStringAsync();
                 var APIResponse = JsonConvert.DeserializeObject<T>(apiContent);

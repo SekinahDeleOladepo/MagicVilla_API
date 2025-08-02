@@ -1,0 +1,41 @@
+﻿@model MagicVilla_WebApp.Model.Dto.LoginRequestDTO
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="container mt-5" style="max-width: 500px;">
+    <h2 class="mb-4 text-center"><i class="bi bi-box-arrow-in-right"></i> Login</h2>
+
+    <form asp-action="Login" method="post" class="card p-4 shadow-sm">
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <div class="mb-3">
+            <label asp-for="UserName" class="form-label"></label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-person"></i></span>
+                <input asp-for="UserName" class="form-control" />
+            </div>
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Password" class="form-label"></label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                <input asp-for="Password" class="form-control" type="password" />
+            </div>
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100"><i class="bi bi-box-arrow-in-right"></i> Login</button>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+

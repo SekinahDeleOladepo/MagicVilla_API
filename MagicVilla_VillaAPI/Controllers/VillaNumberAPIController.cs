@@ -4,6 +4,7 @@ using MagicVilla_VillaAPI.Migrations;
 using MagicVilla_VillaAPI.Model;
 using MagicVilla_VillaAPI.Model.Dto;
 using MagicVilla_VillaAPI.Repository.IRepository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
@@ -108,6 +109,7 @@ namespace MagicVilla_VillaAPI.Controllers
 
         }
         [HttpDelete("{id:int}", Name = "DeleteVillaNumber")]
+        [Authorize(Roles = "Admin")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

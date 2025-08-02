@@ -1,0 +1,60 @@
+﻿@model IEnumerable<MagicVilla_WebApp.Model.Dto.VillaNumberDTO>
+
+@{
+    ViewData["Title"] = "Villa List";
+}
+
+<div class="container mt-5">
+    <div class="row pb-3">
+        <div class="col-md-6">
+            <h2 class="text-primary"><i class="bi bi-house-fill"></i> Villa List</h2>
+        </div>
+        <div class="col-md-6 text-end">
+            <a asp-controller="Villa" asp-action="CreateVillaNumber" class="btn btn-outline-primary">
+                <i class="bi bi-plus-square-fill"></i> Create New Villa
+            </a>
+        </div>
+    </div>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-light">
+            <tr>
+                <th>Name</th>
+                <th>Occupancy</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.VillaNo</td>
+                        <td>@item.VillaID</td>
+                        <td>@item.SpecialDetails</td>
+                        <td>
+                            <a asp-action="UpdateVillaNumber" asp-route-VillaId="@item.VillaID" class="btn btn-outline-success btn-sm me-1">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            <a asp-action="DeleteVilla" asp-route-VillaId="@item.VillaID" class="btn btn-outline-danger btn-sm">
+                                <i class="bi bi-trash3-fill"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="4" class="text-center text-muted">
+                        <i class="bi bi-info-circle"></i> No villas found.
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<br/>
